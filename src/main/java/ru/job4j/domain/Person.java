@@ -17,6 +17,23 @@ public class Person {
     private String login;
     private String password;
 
+    public Person() {
+    }
+
+    public Person(int id, String login, String password) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+    }
+
+    public static Person of(int id, String login, String password) {
+        Person person = new Person();
+        person.id = id;
+        person.login = login;
+        person.password = password;
+        return person;
+    }
+
     public int getId() {
         return id;
     }
@@ -58,5 +75,14 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hash(id, login, password);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{"
+                + "id=" + id
+                + ", login='" + login + '\''
+                + ", password='" + password + '\''
+                + '}';
     }
 }
