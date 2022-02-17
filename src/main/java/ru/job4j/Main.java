@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import javax.sql.DataSource;
 
@@ -14,6 +15,16 @@ public class Main extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(Main.class);
+    }
+
+    /**
+     * Spring boot имеет удобный механизм интеграции Rest сервисов.
+     * RestTemplate - позволяет осуществлять вывозы стороннего REST API.
+     * @return на выходе экземпляр класса
+     */
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
     @Bean
